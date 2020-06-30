@@ -86,10 +86,10 @@ After these steps our data looks like:
 |3|	One of the flat-out drollest movies of all-tim...  |10|	one flat drollest movi time sim rutherford bes...|
 |4|	When I first got wind of this picture, it was ...  |9 |	first got wind pictur call shepherd suppos fil...|
 
-Column `'review_parse'` represents processed text of a review. New `pd.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
+Column `'review_parse'` represents processed text of a review. New `pandas.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
 
 # Model selection
-We have used `TfidfVectorizer` from `scikit-learn` library to make features from the data. After deriving features *cross-validation* was performed on the train data splitting it in 5 folds with four different models. These models are:
+We have used `TfidfVectorizer` from `scikit-learn` library to make features from text in `'review_parse'` columns of our `pandas.DataFrame`s. After deriving features *cross-validation* was performed on the train data by splitting it in 5 folds and training four different models. These models are:
 - RandomForestClassifier
 - LinearSVC
 - MultinomialNB
