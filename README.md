@@ -99,7 +99,7 @@ To make features from the dataset we used `TfidfVectorizer` from `scikit-learn` 
 
 ![Model selection](https://github.com/andrwvrn/MovieReviewClassifier/raw/master/images/cv.png)
 
-As we can see `LinearSVC` and `Logistic Regression` perform better than the other two classifiers, with `Logistic Regression` having a slight advantage thus it has been chosen for subsequent utilization.
+As we can see `LinearSVC` and `Logistic Regression` perform better than other two classifiers, with `Logistic Regression` having a slight advantage thus it has been chosen for subsequent utilization.
 
 # Hyperparameters tuning
 For hyperparameters tuning [W&B](https://www.wandb.com/) platform has been used and a *random search* with *cross-validation* on *3* folds was performed. File `sweep.yaml` with hyperparameters values and a script for `wandb` sweep agent are stored in `hparams` folder.
