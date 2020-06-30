@@ -85,6 +85,7 @@ After these steps our data looks like:
 |2|	The first time I've seen this DVD, I was not o...  |10|	first time seen dvd onli happi becaus fact fir...|
 |3|	One of the flat-out drollest movies of all-tim...  |10|	one flat drollest movi time sim rutherford bes...|
 |4|	When I first got wind of this picture, it was ...  |9 |	first got wind pictur call shepherd suppos fil...|
+
 Column `'review_parse'` represents processed text of a review. New `pd.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
 
 # Model selection
