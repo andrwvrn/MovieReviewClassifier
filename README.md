@@ -59,6 +59,14 @@ Server returns `JsonResponse` class and to get values from it you can do next:
 # Data
 Data was taken from [Large Movie Review Dataset v1.0](https://ai.stanford.edu/~amaas/data/sentiment/). This dataset contains movie reviews along with their associated binary sentiment polarity labels. The core dataset contains 50,000 reviews split evenly into 25k train and 25k test sets. The overall distribution of labels is balanced (25k pos and 25k neg). In the labeled train/test sets, a negative review has a score <= 4 out of 10, and a positive review has a score >= 7 out of 10. Thus reviews with more neutral ratings are not included in the train/test sets. According to this, the classifier gives rating predictions for 'negative' reviews from 1 to 4 and for 'positive' reviews from 7 to 10. There are 8 classes overall.
 
+## Table of contents
+* [Data prepatation](#datapreparation)
+* [Text processing](#textprocessing)
+* [Model selection](#modelselection)
+* [Hyperparameters tuning](#hyperparamstuning)
+* [Model testing](#modeltesting)
+* [Notebooks](#notebooks)
+
 # Data preparation
 At first step files from [Dataset](https://ai.stanford.edu/~amaas/data/sentiment/) have been read and stored in two `pandas.DataFrame`s. The first `pandas.DataFrame` contains `train` data and the second contains `test` data. They can be represented as tables:
 |      |Review     |Rating                                            |
