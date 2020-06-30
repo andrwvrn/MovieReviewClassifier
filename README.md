@@ -89,7 +89,7 @@ After these steps our data looks like:
 Column `'review_parse'` represents processed text of a review. New `pd.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
 
 # Model selection
-To make features from the dataset we used `TfidfVectorizer` from `scikit-learn` library. After deriving features *cross-validation* was performed on the train data splitting it in 5 folds with four different models. These models are:
+We have used `TfidfVectorizer` from `scikit-learn` library to make features from the data. After deriving features *cross-validation* was performed on the train data splitting it in 5 folds with four different models. These models are:
 - RandomForestClassifier
 - LinearSVC
 - MultinomialNB
