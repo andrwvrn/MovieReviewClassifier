@@ -74,17 +74,17 @@ There were duplicated reviews in the `'Review'` column of our tables and after d
 # Text processing
 Reviews processing was provided in 3 steps:
 1. Deriving words with length more than 3 letters using `re` module with regular expression `[a-zA-Z]{3,}`.
-2. Words [stemming](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) using `nltk.SnowballStemmer`
-3. Deleting *stopwords* using `nltk.stopwords`
+2. Deleting *stopwords* using `nltk.stopwords`.
+3. Words *lemmatization* using `nltk.SnowballStemmer`
 
 After these steps our data looks like:
 | |Review	                                           | Rating |review_parse                                |
 |-|--------------------------------------------------------|--------|--------------------------------------------|
-|0|	This is fantastic! Everything from the Score -...  |10|	fantast everyth score final credit role movi m...|
-|1|	This movie was amazing!!!! From beginning to e...  |10|	movi amaz begin end movi pack fun laugh music ...|
-|2|	The first time I've seen this DVD, I was not o...  |10|	first time seen dvd onli happi becaus fact fir...|
-|3|	One of the flat-out drollest movies of all-tim...  |10|	one flat drollest movi time sim rutherford bes...|
-|4|	When I first got wind of this picture, it was ...  |9 |	first got wind pictur call shepherd suppos fil...|
+|0|	This is fantastic! Everything from the Score -...  |10| this fantastic everything score final credit r...|
+|1|	This movie was amazing!!!! From beginning to e...  |10| this movie amazing from beginning end movie pa...|
+|2|	The first time I've seen this DVD, I was not o...  |10|	the first time seen dvd happy fact first time ...|
+|3|	One of the flat-out drollest movies of all-tim...  |10|	one flat drollest movie time sim rutherford be...|
+|4|	When I first got wind of this picture, it was ...  |9 |	when first got wind picture called shepherd su...|
 
 Column `'review_parse'` represents processed text of a review. New `pandas.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
 
@@ -102,7 +102,7 @@ We have used `TfidfVectorizer` from `scikit-learn` library to make features from
 As we can see `LinearSVC` and `Logistic Regression` perform better than other two classifiers, with `Logistic Regression` having a slight advantage thus it has been chosen for subsequent utilization.
 
 # Hyperparameters tuning
-For hyperparameters tuning [W&B](https://www.wandb.com/) platform has been used and a *random search* with *cross-validation* on *3* folds was performed. File `sweep.yaml` with hyperparameters values and a script for `wandb` sweep agent are stored in `hparams` folder.
+For hyperparameters tuning [W&B](https://www.wandb.com/) platform has been used and *randomized search* with *cross-validation* on *3* folds was performed. File `sweep.yaml` with hyperparameters values and a script for `wandb` sweep agent are stored in `hparams` folder.
 
 ![hparams search](https://github.com/andrwvrn/MovieReviewClassifier/raw/master/images/hparams.png)
 
