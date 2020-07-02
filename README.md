@@ -73,8 +73,8 @@ There were duplicated reviews in the `'Review'` column of our tables and after d
 
 # Text processing
 Reviews processing was provided in 3 steps:
-1. Deriving words with length more than 3 letters using `re` module with regular expression `[a-zA-Z]{3,}`.
-2. Deleting *stopwords* using `nltk.stopwords`.
+1. Deriving words with length more than 3 letters using `re` module with regular expression `[a-zA-Z]{3,}`
+2. Deleting *stopwords* using `nltk.stopwords`
 3. Words *lemmatization* using `nltk.WordNetLemmatizer`
 
 After these steps our data looks like:
