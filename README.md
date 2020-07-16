@@ -42,7 +42,7 @@ There are two ways to get classification of a review by MovieReviewClassifier.
 $ python3 classify.py sample_reviews/sample_pos_review.txt
 Rating: 7 Class: Positive
 ```
-2. The second way is to use Django application deployed on [Heroku](https://www.heroku.com/). Here is an example of code from Python interpreter but you can also put it in your `.py` script and run:
+2. The second way is to use Django application deployed on [Heroku](https://www.heroku.com/). Here is an example of code from Python interpreter:
 ```python
 >>>import requests
 >>>req = requests.get('https://movierev.herokuapp.com/cls', {'text':'This films is good.'})
