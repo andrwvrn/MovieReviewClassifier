@@ -37,7 +37,7 @@ If you want to manage web application locally you will need to additionally inst
 
 # Making classifications
 There are two ways to get classification of a review by MovieReviewClassifier. 
-1. You can do it locally by using script `classify.py` placed in the root directory of a repo. There is an example of classification with the sample of a review extracted from the test part of our dataset and placed in the `/sample_reviews` folder.
+1. You can do it running `classify.py` from the root directory of this repo. There is an example of classification with the sample of a review extracted from the test part of our dataset and placed in the `/sample_reviews` folder.
 ```sh
 $ python3 classify.py sample_reviews/sample_pos_review.txt
 Rating: 7 Class: Positive
@@ -89,7 +89,7 @@ After these steps our data looks like:
 Column `'review_parse'` represents processed text of a review. New `pandas.DataFrame`s with cleaned and processed data have been stored to `/data` folder in `.pkl` format.
 
 # Model selection
-We have used `TfidfVectorizer` from `scikit-learn` library to make features from text in `'review_parse'` columns of our `pandas.DataFrame`s. After deriving features *cross-validation* was performed on the train data by splitting it in 5 folds and training four different models. These models are:
+`TfidfVectorizer` from `scikit-learn` library was used to make features from text in `'review_parse'` columns of our `pandas.DataFrame`s. After deriving features *cross-validation* was performed on the train data by splitting it in 5 folds and training four different models. These models are:
 - RandomForestClassifier
 - LinearSVC
 - MultinomialNB
