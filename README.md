@@ -37,7 +37,7 @@ If you want to manage web application locally you will need to additionally inst
 
 # Making classifications
 There are two ways to get classification of a review by MovieReviewClassifier. 
-1. You can do it running `classify.py` from the root directory of this repo. There is an example of classification with the sample of a review extracted from the test part of our dataset and placed in the `/sample_reviews` folder.
+1. By running `classify.py` from the root directory of this repo. There is an example of classification with the sample of a review extracted from the test part of the dataset and placed in the `/sample_reviews` folder.
 ```sh
 $ python3 classify.py sample_reviews/sample_pos_review.txt
 Rating: 7 Class: Positive
@@ -49,13 +49,7 @@ Rating: 7 Class: Positive
 >>>print(req.content)
 b'{"prediction": {"Rating": 7, "Class": "Positive"}}'
 ```
-Server returns `JsonResponse` class and to get values from it you can do next:
-```python
->>>import json
->>>req_d = json.loads(req.content)
->>>print(req['prediction'])
-{'Rating': 7, 'Class': 'Positive'}
-```
+
 # Data
 Data was taken from [Large Movie Review Dataset v1.0](https://ai.stanford.edu/~amaas/data/sentiment/). This dataset contains movie reviews along with their associated binary sentiment polarity labels. The core dataset contains 50,000 reviews split evenly into 25k train and 25k test sets. The overall distribution of labels is balanced (25k pos and 25k neg). In the labeled train/test sets, a negative review has a score <= 4 out of 10, and a positive review has a score >= 7 out of 10. Thus reviews with more neutral ratings are not included in the train/test sets. According to this, the classifier gives rating predictions for 'negative' reviews from 1 to 4 and for 'positive' reviews from 7 to 10. There are 8 classes overall.
 
@@ -69,11 +63,11 @@ At first step files from [Dataset](https://ai.stanford.edu/~amaas/data/sentiment
 |3     |One of the flat-out drollest movies of all-tim...	 |10  |
 |4     |When I first got wind of this picture, it was ...	 |9   |
 
-There were duplicated reviews in the `'Review'` column of our tables and after deleting them `24904` and `24801` rows left in `train` and `test` tables correspondingly. For convenience and succeeding manipulations these `pandas.DataFrame`s have been saved as `.csv` files to `/csv` folder of the repo.
+There were duplicated reviews in the `'Review'` column of the tables and after deleting them `24904` and `24801` rows left in `train` and `test` tables correspondingly. For convenience and succeeding manipulations these `pandas.DataFrame`s have been saved as `.csv` files to `/csv` folder of the repo.
 
 # Text processing
 Reviews processing was provided in 3 steps:
-1. Deriving words with length more than 3 letters using `re` module with regular expression `[a-zA-Z]{3,}`
+1. Deriving words with length more than 3 letters
 2. Deleting *stopwords* using `nltk.stopwords`
 3. Words *lemmatization* using `nltk.WordNetLemmatizer`
 
@@ -102,11 +96,11 @@ Column `'review_parse'` represents processed text of a review. New `pandas.DataF
 As we can see `LinearSVC` and `Logistic Regression` perform better than other two classifiers, with `Logistic Regression` having a slight advantage thus it has been chosen for subsequent utilization.
 
 # Hyperparameters tuning
-For hyperparameters tuning [W&B](https://www.wandb.com/) platform has been used and *randomized search* with *cross-validation* on *3* folds was performed. File `sweep.yaml` with hyperparameters values and a script for `wandb` sweep agent are stored in `hparams` folder.
+For hyperparameters tuning [W&B](https://www.wandb.com/) platform was used and *randomized search* with *cross-validation* on *3* folds was performed. File `sweep.yaml` with hyperparameters values and a script for `wandb` sweep agent are stored in `hparams` folder.
 
 ![hparams search](https://github.com/andrwvrn/MovieReviewClassifier/raw/master/images/hparams.png)
 
-Best parameters gave us an `accuracy_score` of `0.4297` but parameters with a slightly less score of `0.4278` were chosen in order to make final model more lightweight. These parameters are:
+Best parameters gave an `accuracy_score` of `0.4297` but parameters with a slightly less score of `0.4278` were chosen in order to make final model fast. These parameters are:
 ```yaml
 TfidfVectorizer:
   max_df: 0.95
