@@ -51,7 +51,7 @@ sip==4.19.13
 six==1.15.0
 sqlparse==0.3.1
 threadpoolctl
-tornado==6.0.4
+tornado==6.3.3
 tqdm==4.46.1
 traitlets==4.3.3
 urllib3==1.26.5
